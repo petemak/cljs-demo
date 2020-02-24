@@ -11,6 +11,7 @@
                  [reagent "0.8.1"]]
 
   :source-paths ["src"]
+  :plugins [[org.clojars.benfb/lein-gorilla "0.6.0"]]
 
   :aliases {"fig"       ["trampoline" "run" "-m" "figwheel.main"]
             "fig:build" ["trampoline" "run" "-m" "figwheel.main" "-b" "dev" "-r"]
@@ -18,6 +19,5 @@
             "fig:test"  ["run" "-m" "figwheel.main" "-co" "test.cljs.edn" "-m" "cljs-demo.test-runner"]}
 
   :profiles {:dev {:dependencies [[com.bhauman/figwheel-main "0.2.3"]
-                                  [com.bhauman/rebel-readline-cljs "0.1.4"]]
-                   }})
+                                  [com.bhauman/rebel-readline-cljs "0.1.4"]]}})
 

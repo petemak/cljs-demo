@@ -3,8 +3,16 @@
 
 
 ;; Application state
-(defonce app-state (atom {:text "ClojureScript Reagent Hiccup Demo!"
+;; Atoms provide a way to manage shared, synchronous, independent state. 
+(defonce app-state (atom {:title "ClojureScript Reagent Hiccup Demo!"
                           :counter 0}))
+
+;; Demo code
+;; Ctr-c Meta-p
+(comment
+  (swap! app-state assoc :title "Demo: Dynamic feedback loop. Thanks John McCarthy!")
+  (swap! app-state update-in [:counter] inc)
+  )
 
 ;;---------------------------------------------------------
 ;; increment counter
@@ -26,7 +34,7 @@
     "Count: " (:counter @app-state)]
    [:button {:class "btn btn-primary"
              :type "submit"
-             :on-click #(inc-count)} "Inc"]])
+             :on-click #(inc-count)} "Increase"]])
 
 ;;---------------------------------------------------------
 ;; Log in component
@@ -60,8 +68,8 @@
   []
   [:div {:class "container-fluid"}
    [:div.container
-    [:div {:class "alert alert-success" :role "alert"}
-     [:h1 (:text @app-state)]
+    [:div {:class "alert alert-primary" :role "alert"}
+     [:h1 (:title @app-state)]
      [:p "ClojureScript demo. Uses Reagent a React wrapper and Hiccup. Reagent provides a minimalistic interface between
          ClojureScript and React. Reagent uses a datastructure known as Hiccup to describe HTML.
          Hiccup describes HTML elements and user-defined components as a nested ClojureScript vector"]
